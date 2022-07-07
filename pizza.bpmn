@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_16ypvzc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:message id="Message_1d2l7di" name="CreatePizzaMsg" />
+  <bpmn:message id="Message_2m6s5uj" name="PizzaReceivedMsg" />
+  <bpmn:message id="Message_0e2vo5g" name="AskPizzaMsg" />
+  <bpmn:process id="Process_0dnm4gv" isExecutable="false">
+    <bpmn:startEvent id="Event_1aiynm1">
+      <bpmn:outgoing>Flow_0cfezqe</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0cfezqe" sourceRef="Event_1aiynm1" targetRef="Activity_0apwerp" />
+    <bpmn:endEvent id="Event_01tec2h">
+      <bpmn:incoming>Flow_13avrhw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_13avrhw" sourceRef="Activity_0apwerp" targetRef="Event_01tec2h" />
+    <bpmn:serviceTask id="Activity_0apwerp" name="Get mail" camunda:type="external" camunda:topic="GetMail">
+      <bpmn:incoming>Flow_0cfezqe</bpmn:incoming>
+      <bpmn:outgoing>Flow_13avrhw</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0dnm4gv">
+      <bpmndi:BPMNEdge id="Flow_0cfezqe_di" bpmnElement="Flow_0cfezqe">
+        <di:waypoint x="228" y="120" />
+        <di:waypoint x="280" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13avrhw_di" bpmnElement="Flow_13avrhw">
+        <di:waypoint x="380" y="120" />
+        <di:waypoint x="432" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1aiynm1_di" bpmnElement="Event_1aiynm1">
+        <dc:Bounds x="192" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01tec2h_di" bpmnElement="Event_01tec2h">
+        <dc:Bounds x="432" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1r7wkaw_di" bpmnElement="Activity_0apwerp">
+        <dc:Bounds x="280" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
